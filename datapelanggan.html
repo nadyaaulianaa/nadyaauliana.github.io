@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Toko Serba Ada</title>
+</head>
+<body>
+    <style>
+        html, body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+        }
+    
+        body {
+            background-color: lightblue;
+        }
+    
+        .custom {
+            overflow: hidden;
+            white-space: nowrap;  
+        }
+    
+        .header {
+            text-align: center;
+            background-color: lightblue;
+            padding: 20px;
+            margin: 0; 
+        }
+    
+        .flex-container {
+            display: flex;
+            height: 100%;
+            margin: 0;
+        }
+    
+        .topnav {
+            flex: 1;
+            height: 100%;
+            background-color: darkkhaki;
+            text-align: justify;
+            padding: 10px;
+            display: inline-block;
+        }
+    
+        .topnav .nav-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; 
+        }
+    
+        .topnav .nav-list li {
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        .form-group {
+            width: 100%;
+            height: 100%;
+            background-color: palegreen;
+            padding: 100px;
+            display: inline-block;
+        }
+    
+        .table-container {
+            margin-top: 10px;
+        }
+    
+        table {
+            width: 55%;
+        }
+    
+    </style>
+    <body>
+        <div class="header">
+            <h2>DATA PELANGGAN</h2>
+        </div> 
+            <div class="form-group">
+                <form name="form">
+                    <pre>
+                        <label for="kode_pelanggan">KODE PELANGGAN</label>    :   <input type="text" name="kode_pelanggan">
+                        <label for="nama_pelanggan">NAMA PELANGGAN</label>    :   <input type="text" name="nama_pelanggan">
+                        <label for="telp">TELEPON</label>           :   <input type="text" name="telp">
+                    </pre>
+                    <button id="process">PROSES</button>
+                </form>
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <td>KODE PELANGGAN</td> 
+                                <td>NAMA PELANGGAN</td>
+                                <td>TELEPON</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+             
+                var form = document.forms["form"];
+        
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault(); 
+        
+                    var kode_pelanggan = form.elements["kode_pelanggan"].value;
+                    var nama_pelanggan = form.elements["nama_pelanggan"].value;
+                    var telp = form.elements["telp"].value;
+        
+                    var newRow = document.createElement("tr");
+        
+                    newRow.innerHTML = "<td>" + kode_pelanggan + "</td><td>" + nama_pelanggan + "</td><td>" + telp + "</td>";
+        
+                    var tbody = document.querySelector("tbody");
+        
+                    tbody.appendChild(newRow);
+        
+                    form.reset();
+                });
+            });
+        </script>      
+</body>
+</html>

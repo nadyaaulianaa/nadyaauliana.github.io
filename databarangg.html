@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Toko Serba Ada</title>
+    <style>
+      html,
+      body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background-color: pink;
+      }
+
+      .custom {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .header {
+        text-align: center;
+        background-color: pink;
+        padding: 20px;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        height: 100%;
+        margin: 0;
+      }
+
+      .topnav {
+        flex: 1;
+        height: 100%;
+        background-color: palevioletred;
+        text-align: justify;
+        padding: 10px;
+        display: inline-block;
+      }
+
+      .topnav .nav-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .topnav .nav-list li {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .form-group {
+        width: 100%;
+        height: 100%;
+        background-color: violet;
+        padding: 100px;
+        display: inline-block;
+      }
+
+      .table-container {
+        margin-top: 10px;
+      }
+
+      table {
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>DATA BARANG</h2>
+    </div>
+
+    <div class="form-group">
+      <form name="myForm">
+        <label for="kodeBarang">KODE BARANG</label>   :
+        <input type="text" name="kodeBarang"/><br /><br />
+        <label for="namaBarang">NAMA BARANG</label>   :
+        <input type="text" name="namaBarang"/><br /><br />
+        <label for="hargaBarang">HARGA BARANG</label> :
+        <input type="text" name="hargaBarang"/><br /><br />
+        <label for="satuanBarang">SATUAN</label>      :
+        <select id="satuan" name="satuanBarang">
+          <option value="Kg">Kg</option>
+          <option value="Buah">Buah</option>
+          <option value="Set">Set</option>
+          <option value="Lusin">Lusin</option>
+          <option value="Lembar">Lembar</option></select
+        ><br />
+        <button type="button" id="process" onclick="prosesData()">
+          PROSES
+        </button>
+      </form>
+
+      <div class="table-container">
+        <table border="1" id="hasilTable">
+          <thead>
+            <tr>
+              <td>KODE BARANG</td>
+              <td>NAMA BARANG</td>
+              <td>HARGA BARANG</td>
+              <td>SATUAN</td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+
+ function prosesData() {
+        var kodeBarang = document.forms["myForm"]["kodeBarang"].value;
+        var namaBarang = document.forms["myForm"]["namaBarang"].value;
+        var hargaBarang = parseFloat(
+          document.forms["myForm"]["hargaBarang"].value
+        );
+        var satuan = document.forms["myForm"]["satuanBarang"].value;
+
+        var hasilTable = document.getElementById("hasilTable");
+        var newRow = hasilTable.insertRow(-1);
+        var cells = [];
+
+        cells.push(newRow.insertCell(0));
+        cells.push(newRow.insertCell(1));
+        cells.push(newRow.insertCell(2));
+        cells.push(newRow.insertCell(3));
+
+        cells[0].innerHTML = kodeBarang;
+        cells[1].innerHTML = namaBarang;
+        cells[2].innerHTML = hargaBarang.toFixed(2);
+        cells[3].innerHTML = satuan;
+      }
+    </script>
+  </body>
+</html>
